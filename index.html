@@ -1,0 +1,2083 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>isoftway ai</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    /* Basic layout */
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 16px;
+      background-color: #0175f8;
+    }
+
+    header {
+      background-color: #FFD700;
+      color: black;
+      text-align: center;
+      padding: 0;
+      height: 250px;
+    }
+
+    header img {
+      width: 100%;
+      height: 250px;
+      padding: 0;
+    }
+
+    footer {
+      background-color: #FFD700;
+      color: black;
+      text-align: center;
+      padding: 5px;
+      height: 55px;
+    }
+
+
+    .text-container {
+      color: #ff9500;
+      text-align: center;
+      position: absolute;
+      /* Positionnement absolu pour centrer le texte à l'intérieur du header */
+      top: 10%;
+      /* Centrage vertical */
+      left: 50%;
+      /* Centrage horizontal */
+      transform: translate(-50%, -50%);
+      /* Déplacement de la moitié de sa largeur et hauteur pour un centrage parfait */
+    }
+
+    /* Make the left column fixed */
+    .left-column {
+
+      text-align: justify;
+      color: chartreuse;
+      position: fixed;
+      /* Fixes the left column */
+      top: 0;
+      left: 0;
+      width: 25%;
+      /* Fixed width for the left column */
+      height: 100vh;
+      /* Full height of the viewport */
+      overflow-y: auto;
+      /* Scroll if the content overflows */
+    }
+
+    /* Adjust the container */
+    .container {
+      display: block;
+      margin-left: 25%;
+      /* Push the right column to the right */
+      padding: 20px;
+    }
+
+
+
+    /* Right column */
+    .right-column {
+      padding: 20px;
+      background-color: rgb(201, 249, 215);
+      color: black;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .left-column {
+        width: 100%;
+        /* Make the left column full width on small screens */
+        position: relative;
+        /* Disable fixed positioning on mobile */
+        height: auto;
+      }
+
+
+      .container {
+        margin-left: 0;
+        /* No left margin on mobile */
+      }
+    }
+
+    a {
+      background-color: #333;
+      color: rgb(228, 252, 4);
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 16px;
+    }
+
+    img {
+      padding: 15px;
+    }
+
+
+
+    /* Button styles */
+    .btn0 {
+      display: inline;
+      padding: 10px 20px;
+      background-color: #2700bf;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 16px;
+    }
+
+    .btn0:hover {
+      background-color: #bab9be;
+      color: black;
+    }
+
+
+
+    .btn {
+      display: inline;
+      padding: 10px 20px;
+      background-color: #d28900;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 16px;
+    }
+
+    .btn:hover {
+      background-color: #fee2ac;
+      color: black;
+    }
+
+    .btn2 {
+      display: inline;
+      padding: 10px 20px;
+      background-color: #fb0000;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 16px;
+    }
+
+    .btn2:hover {
+      background-color: #faa7a7;
+      color: black;
+    }
+
+
+    .btn3 {
+      display: inline;
+      padding: 10px 20px;
+      background-color: #002D5C;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 16px;
+    }
+
+    .btn3:hover {
+      background-color: #0078BE;
+      color: black;
+    }
+
+
+    .btn4 {
+      display: inline;
+      padding: 10px 20px;
+      background-color: #FFFFFF;
+      color: black;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 16px;
+    }
+
+    .btn4:hover {
+
+      background-color: #FDD023;
+      color: black;
+    }
+
+
+    .btn5 {
+      display: inline;
+      padding: 10px 20px;
+      background-color: #535353;
+      color: #2A7FFF;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 16px;
+    }
+
+    .btn5:hover {
+
+      background-color: #cac7c7;
+      color: black;
+    }
+
+
+    .btn6 {
+      display: inline;
+      padding: 10px 20px;
+      background-color: #007AFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 16px;
+    }
+
+    .btn6:hover {
+
+      background-color: #003366;
+      color: white;
+    }
+
+
+    .btn7 {
+      display: inline;
+      padding: 10px 20px;
+      background-color: #F7931A;
+      color: black;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 16px;
+    }
+
+    .btn8:hover {
+
+      background-color: #f7f5f3;
+      color: black;
+    }
+
+
+    .btn8 {
+      display: inline;
+      padding: 10px 20px;
+      background-color: #8B4513;
+      color: black;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 16px;
+    }
+
+    .btn8:hover {
+
+      background-color: #7d6451;
+      color: black;
+    }
+
+    /* Initially hide all content divs */
+    .content-div {
+      display: none;
+    }
+
+    ul li {
+      padding: 10px;
+      list-style-type: "\2600";
+    }
+
+    ul li:nth-child(odd) {
+      background-color: #FFFFF0;
+
+    }
+
+    ul li:nth-child(even) {
+      background-color: #FFC0CB;
+    }
+
+    .cadre {
+      display: inline-block;
+      border: 1px solid #f90202;
+      padding: 10px;
+      -moz-border-radius: 10px 0;
+      -webkit-border-radius: 10px 0;
+      border-radius: 10px 0;
+    }
+
+    .ai {
+      display: inline-block;
+      background-color: darkgreen;
+      border: 1px solid #9fc6ff;
+      padding: 10px;
+      -moz-border-radius: 10px 0;
+      -webkit-border-radius: 10px 0;
+      border-radius: 10px 0;
+    }
+
+    .code {
+      display: inline-block;
+      background-color: darkslategray;
+
+      border: 1px solid #9fc6ff;
+      padding: 10px;
+      -moz-border-radius: 10px 0;
+      -webkit-border-radius: 10px 0;
+      border-radius: 10px 0;
+    }
+
+
+
+    .english {
+      display: inline-block;
+      background-color: rgb(87, 1, 1);
+
+      border: 1px solid #9fc6ff;
+      padding: 10px;
+      -moz-border-radius: 10px 0;
+      -webkit-border-radius: 10px 0;
+      border-radius: 10px 0;
+    }
+
+
+
+    .news {
+      display: inline-block;
+      background-color: #2700bf;
+
+      border: 1px solid #9fc6ff;
+      padding: 10px;
+      -moz-border-radius: 10px 0;
+      -webkit-border-radius: 10px 0;
+      border-radius: 10px 0;
+    }
+
+
+
+    h2 {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <img src="isoftway/cerveau.png" alt="cerveau">
+    <div class="text-container">
+      <h1>ai-softway</h1>
+
+    </div>
+  </header>
+
+  <!-- Left column with buttons -->
+  <div class="left-column">
+    <div class="cadre">
+      <ul>
+        <li style="padding:0; width: 0;"><button class="btn0" data-content="accueil">Accueil</button></li>
+      </ul>
+      <div class="cadre"><button class="btn6" data-content="AppleMLplan">Apple Machine Learning: plan</button>
+        <button class="btn6" data-content="iphone">iphone ios: plan</button>
+      </div>
+      <div class="cadre"> <button class="btn" data-content="bayes">Théorème de Thomas Bayes</button>
+        <button class="btn" data-content="chain-of-thought">chain-of-thought</button>
+        <button class="btn" data-content="deepfake">Deepfake</button>
+        <button class="btn" data-content="adn">Ordinateurs à ADN</button>
+      </div>
+
+      <div class="cadre"> <button class="btn2" data-content="olympe">Mont Olympe</button>
+        <button class="btn2" data-content="porphyrion">trou noir Porphyrion</button>
+      </div>
+
+      <button class="btn3" data-content="entorhinal">How your brain detects patterns in the everyday: without conscious thought</button>
+      <button class="btn3" data-content="adnmitochondrial">Le génome et l'insertion d'ADN mitochondrial</button>
+      <div class="cadre"> <button class="btn3" data-content="alzheimer">Maladie d'Alzheimer</button>
+      </div>
+
+      <div class="cadre"> <button class="btn4" data-content="torquemada">Thomas Torquemada</button>
+        <button class="btn4" data-content="ukraine">Antisémitisme en Ukraine</button>
+        <button class="btn4" data-content="1789">Origines et Histoire de la Révolution Française</button>
+        <button class="btn4" data-content="tertullien">Tertullien</button>
+      </div>
+
+      <div class="cadre"> <button class="btn5" data-content="ombre">PS: Ombre</button></div>
+
+      <div class="cadre"> <button class="btn7" data-content="bitcoin">Les bitcoins</button></div>
+      <div class="cadre"> <button class="btn8" data-content="proust">Marcel Proust</button></div>
+
+    </div>
+  </div>
+  <!-- Right column where content will be displayed -->
+  <div class="container">
+
+
+    <div class="right-column" id="rightColumn">
+
+      <!---->
+      <div class="cadre">
+        <div class="ai"><a href="#">ai: >>></a></div>
+        <div class="ai"><a href="https://1min.ai">1min</a></div>
+        <div class="ai"><a href="https://www.youtube.com/channel/UC0m81bQuthaQZmFbXEY9QSw/videos">AICodeKing</a></div>
+        <div class="ai"><a href="https://github.com/Significant-Gravitas/AutoGPT#-installation">autoGPT</a></div>
+        <div class="ai"><a href="https://youtu.be/1cQoPwLkASM?si=2886wElClZ1wGcQx">Nathan</a></div>
+        <div class="ai"><a href="https://www.canva.com/">canva</a></div>
+        <div class="ai"><a href="https://deepai.org/">DeepAI</a></div>
+        <div class="ai"><a href="https://chatgpt.com">chatgpt</a></div>
+        <div class="ai"><a href="https://claude.ai/new">claude</a></div>
+        <div class="ai"><a href="https://deepai.org/">DeepAI</a></div>
+        <div class="ai"><a href="https://duckduckgo.com/?q=DuckDuckGo+AI+Chat&ia=chat&duckai=1">duckduckgo ai</a></div>
+        <div class="ai">
+          <a href="https://www.youtube.com/results?search_query=fusionner+deux+visages+dans+photoshop+mac+">mixer</a>
+        </div>
+        <div class="ai">
+          <a href="https://chat.notdiamond.ai/">notdiamond</a>
+        </div>
+        <div class="ai"><a href="https://www.perplexity.ai">perplexity</a></div>
+        <div class="ai">
+          <a href="https://www.phind.com/search?home=true">phind</a>
+        </div>
+        <div class="ai"><a href="https://websim.ai">websim</a></div>
+        <div class="ai"><a href="https://you.com">you</a></div>
+      </div>
+
+      <div class="cadre">
+        <div class="code"><a href="#">code: >>></a></div>
+        <div class="code">
+          <a href="https://developer.apple.com/documentation/coreml">Apple:core-ml</a>
+
+        </div>
+        <div class="code">
+          <a href="https://developer.apple.com/machine-learning/create-ml/">Apple:create-ml</a>
+        </div>
+        <div class="code">
+          <a href="https://developer.apple.com/documentation/vision">Apple:vision</a>
+        </div>
+        <div class="code">
+          <a href="https://developer.apple.com/documentation/naturallanguage">Apple:naturallanguage</a>
+        </div>
+        <div class="code">
+          <a href="https://developer.apple.com">Apple:developer</a>
+        </div>
+        <div class="code">
+          <a href="https://www.perplexity.ai/search/liste-de-8-couples-background-lPK13Yk4R.qdogRbbx8eUQ">couleurs</a>
+        </div>
+        <div class="code">
+          <a href="https://www.youtube.com/results?search_query=cursor+ide+tutorial">cursor</a>
+        </div>
+        <div class="code">
+          <a href="https://dev.to/">dev</a>
+        </div>
+        <div class="code">
+          <a href="https://www.developpez.com">developpez</a>
+        </div>
+        <div class="code">
+          <a href="https://www.perplexity.ai/search/genere-une-page-html-css-et-jq-RrOkv_H3Qda9l76xvGSVYQ#3">pages</a>
+        </div>
+      </div>
+
+      <div class="cadre">
+        <div class="english"><a href="#">english: >>></a></div>
+        <div class="english">
+          <a href="https://continuingstudies.uvic.ca/elc/studyzone/200/reading/">books1</a>
+        </div>
+      </div>
+
+      <div class="cadre">
+        <div class="news"><a href="#">news: >>></a></div>
+        <div class="news"><a href="https://flipboard.com">flipboard</a></div>
+        <div class="news">
+          <a href="https://news.google.com/home?hl=fr&gl=FR&ceid=FR:fr">gnews</a>
+        </div>
+        <div class="news">
+          <a href="https://www.i24news.tv/fr/fil-info">i24news</a>
+        </div>
+        <div class="news"><a href="https://oqee.tv">oqee</a></div>
+        <div class="news">
+          <a href="https://www.youtube.com/c/Tha%C3%AFsdEscufonYT">Thaïs</a>
+        </div>
+        <div class="news"><a href="https://x.com/home">twitter</a></div>
+      </div>
+      <!---->
+
+
+
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 isoftway ai</p>
+  </footer>
+
+  <!-- Predefined content divs -->
+  <!---->
+  <div id="chain-of-thought" class="content-div">
+    <h2>chain-of-thought prompting</h2>
+
+    <ul>
+      <li><a href="https://www.perplexity.ai/search/quelles-sont-quelques-exemples-jSo_bBkvSCSIAeOA7dFYmQ">Chaîne de
+      <li><a href="https://youtu.be/mROkuq9VKwE?si=h0vfIbZuI0i_XdD4">Anomalies</a></li>
+      <li>Le chain-of-thought prompting a émergé comme une technique puissante pour améliorer les capacités de
+        raisonnement des grands modèles de langage. Cette méthode permet de résoudre des problèmes complexes en guidant
+        les modèles d'IA à décomposer les tâches en étapes intermédiaires, imitant ainsi les processus de pensée
+        humaine. En encourageant les modèles à "montrer leur travail", le chain-of-thought prompting améliore non
+        seulement la performance sur diverses tâches de raisonnement, mais augmente également l'interprétabilité et la
+        fiabilité des réponses générées par l'IA.</li>
+      <li><img src="isoftway/chain.png" alt="chain-of-thought" class="image-animee"></li>
+      <li>Cette technique de sollicitation avancée guide les modèles de langage à articuler leur processus de
+        raisonnement étape par étape lors de la résolution de problèmes complexes. En fournissant des exemples qui
+        démontrent des processus de pensée détaillés, la sollicitation CoT encourage les modèles à décomposer les tâches
+        en étapes gérables, similaires aux approches de résolution de problèmes humaines. Cette méthode a montré une
+        efficacité particulière avec les modèles contenant environ 100 milliards de paramètres ou plus, conduisant à une
+        amélioration des performances sur des tâches impliquant l'arithmétique, le raisonnement de bon sens et la
+        manipulation symbolique. La transparence offerte par la sollicitation CoT permet une meilleure interprétabilité
+        des sorties du modèle et une fiabilité accrue dans les scénarios de résolution de problèmes en plusieurs étapes.
+      </li>
+      <li>Méthodologie et Avantages</li>
+      <li>La méthodologie de l'incitation par chaîne de pensée implique de fournir au modèle des exemples qui démontrent
+        un raisonnement étape par étape, puis de lui demander de résoudre de nouveaux problèmes en utilisant une
+        approche similaire. Cette technique offre plusieurs avantages clés :
+        Amélioration des performances sur des tâches de raisonnement complexes, y compris l'arithmétique, le bon sens et
+        le raisonnement symbolique
+        Augmentation de l'interprétabilité des sorties du modèle en rendant explicite le processus de raisonnement
+        Meilleure précision et fiabilité, en particulier pour les problèmes à plusieurs étapes
+        Capacité améliorée à aborder des tâches nécessitant une déduction logique ou un calcul
+        L'incitation par chaîne de pensée est particulièrement efficace lorsqu'elle est utilisée avec des modèles de
+        langage plus grands, généralement ceux avec 100 milliards de paramètres ou plus. En encourageant les modèles à
+        articuler leur processus de réflexion, cette méthode permet d'obtenir des résultats plus précis, interprétables
+        et fiables dans un large éventail d'applications.</li>
+      <li>Variations et Avancées dans le CoT</li>
+      <li>Plusieurs variations et avancées ont été développées pour améliorer l'efficacité de l'incitation à la chaîne
+        de pensée (CoT) :
+        Zero-shot CoT : Utilise des invites comme "Réfléchissons étape par étape" pour susciter le raisonnement sans
+        fournir d'exemples.
+        Auto-cohérence : Génère plusieurs chemins de raisonnement et sélectionne la réponse la plus cohérente.
+        Auto-CoT : Génère automatiquement divers exemples de raisonnement.
+        CoT multimodal : Intègre à la fois du texte et des images pour illustrer les étapes de raisonnement.
+        Ces techniques visent à améliorer la polyvalence et l'applicabilité de l'incitation CoT à travers différentes
+        tâches et tailles de modèles. Les chercheurs continuent d'explorer des méthodes avancées comme l'incitation à
+        quelques coups et l'apprentissage méta pour affiner davantage la capacité des LLM à raisonner et à expliquer
+        leurs processus de pensée.</li>
+      <li>Limites de l'incitation par chaîne de pensée</li>
+      <li>Bien que puissant, le chain-of-thought prompting présente certaines limitations notables. Il peut ne pas
+        toujours produire des chemins de raisonnement corrects, et son efficacité peut varier en fonction du problème
+        spécifique et du modèle utilisé. Les modèles de langage plus petits, en particulier ceux avec moins de 100
+        milliards de paramètres, ont souvent du mal à bénéficier du CoT prompting. De plus, la dépendance de la
+        technique aux explications étape par étape peut parfois conduire à des sorties verbeuses, ce qui peut ne pas
+        être idéal pour toutes les applications.</li>
+      <li>Applications du monde réel de l'incitation CoT</li>
+      <li>Le Chain-of-thought (CoT) a trouvé des applications pratiques dans divers domaines, améliorant les capacités
+        de résolution de problèmes de l'IA dans des scénarios réels :
+        Support Client : Le CoT permet aux chatbots de fournir des réponses plus précises et contextuellement
+        appropriées en les guidant à travers une séquence logique d'étapes, améliorant ainsi la qualité du service
+        client automatisé.
+        Analyse Financière : Dans des tâches comme la prise de décision en investissement, le CoT aide les modèles d'IA
+        à prendre en compte plusieurs facteurs et à explorer divers scénarios, conduisant à des conseils financiers plus
+        complets.
+        Création de Contenu : En décomposant le processus d'écriture en étapes, le CoT améliore le contenu généré par
+        l'IA, produisant des articles plus perspicaces et bien structurés.
+        Outils Éducatifs : Le CoT est utilisé dans le développement de tuteurs IA qui peuvent guider les étudiants à
+        travers des tâches complexes de résolution de problèmes, fournissant des explications claires et étape par
+        étape.
+        Ces applications démontrent le potentiel du CoT à améliorer significativement la performance de l'IA dans les
+        tâches nécessitant un raisonnement en plusieurs étapes et une analyse détaillée.</li>
+      <li>Voici quelques exemples concrets de l'utilisation de l'incitation en chaîne (CoT) dans le service client :
+      </li>
+      <li>Résolution de problèmes complexes :
+        Un agent utilisant CoT pourrait guider un client à travers les étapes de dépannage d'un appareil électronique en
+        décomposant le processus :
+        "D'abord, vérifions l'alimentation. Ensuite, examinons les connexions. Puis, testons les différentes fonctions
+        une par une."</li>
+      <li>Explication de politiques :
+        Pour clarifier une politique de retour complexe, l'agent pourrait utiliser CoT :
+        "Commençons par vérifier la date d'achat. Ensuite, examinons l'état du produit. Enfin, déterminons les options
+        de remboursement ou d'échange disponibles."</li>
+      <li>Guidage pour l'utilisation d'un produit :
+        Un agent pourrait guider un client pas à pas dans la configuration d'un nouveau logiciel :
+        "Commençons par télécharger le programme. Ensuite, nous l'installerons. Puis, nous configurerons vos
+        préférences. Enfin, nous testerons les fonctionnalités principales."</li>
+      <li>Traitement des réclamations :
+        Pour gérer une plainte, l'agent pourrait utiliser CoT pour structurer sa réponse :
+        "Tout d'abord, je vais écouter votre préoccupation. Ensuite, je vérifierai les détails dans notre système. Puis,
+        j'examinerai les solutions possibles. Enfin, nous choisirons ensemble la meilleure option."</li>
+      <li>Assistance pour les achats :
+        Un agent pourrait guider un client indécis à travers le processus de sélection d'un produit :
+        "Commençons par identifier vos besoins spécifiques. Ensuite, comparons les caractéristiques des différents
+        modèles. Puis, examinons les avis des clients. Enfin, nous évaluerons le rapport qualité-prix."</li>
+      <li>En utilisant CoT, les agents de service client peuvent offrir une assistance plus structurée et
+        compréhensible, améliorant ainsi l'expérience client et augmentant les chances de résolution satisfaisante des
+        problèmes</li>
+      <li><a class="nav3" href="#top">gotoTop</a></li>
+    </ul>
+
+
+  </div>
+  <!---->
+
+
+  <!---->
+  <div id="AppleMLplan" class="content-div">
+    <h2>Apple Machine Learning: Plan</h2>
+    <ul>
+      <li>Inscrivez-vous sur le site d'apprentissage : <a
+          href="https://developer.apple.com/en-us/learning/">https://developer.apple.com/en-us/learning/</a></li>
+      <li>Suivez les cours en ligne : Apple propose de nombreux cours en ligne qui couvrent différents aspects du
+        développement iOS, de l'utilisation de Swift et de la machine learning.</li>
+      <li>Installez Xcode : Il est recommandé d'installer le logiciel d'environnement de développement intégré (IDE) de
+        Apple, Xcode, pour développer des applications sur iOS et apprendre à utiliser les technologies associées. Vous
+        pouvez le télécharger ici : <a href="https://developer.apple.com/xcode/">https://developer.apple.com/xcode/</a>
+      </li>
+      <li>Découvrir les bibliothèques ML : Apple a mis en place plusieurs bibliothèques ML qui peuvent être utilisées
+        dans vos projets d'apprentissage automatique. Par exemple, Core ML vous permet de charger et d'utiliser des
+        modèles machine learning pré-entraînés. Vous pouvez apprendre à les utiliser en suivant les tutoriels sur le
+        site Apple.</li>
+      <li>Pratiquer : Comme dans tout domaine, la pratique est essentielle pour maîtriser les concepts de la machine
+        learning. Essayez de créer vos propres modèles ML et de tester leurs performances.</li>
+      <li>Trouver des communautés : Rejoignez des groupes d'apprentissage en ligne, comme le forum Apple Developer, où
+        vous pouvez partager vos connaissances, poser des questions et apprendre des autres développeurs.</li>
+      <li>Suivre les dernières actualités : Les technologies de l'intelligence artificielle évoluent rapidement.
+        Assurez-vous de suivre les dernières actualités et de rester à jour sur le développement d'Apple et des
+        bibliothèques ML associées.</li>
+
+    </ul>
+
+    <ul>
+      <li>Familiarize yourself with Swift programming language: Apple's machine learning framework is built around
+        Swift, so having a solid understanding of Swift is essential. You can learn Swift through Apple's official Swift
+        documentation (<a href="https://docs.swift.org/swift-book/">https://docs.swift.org/swift-book/</a>) or by taking
+        online courses on platforms like Udemy, Coursera, or edX.</li>
+      <li>Learn the basics of machine learning: Before diving into Core ML, it's crucial to understand the fundamentals
+        of machine learning. You can learn about different types of machine learning algorithms, data preprocessing,
+        feature engineering, and model evaluation through online resources, books, or courses.</li>
+      <li>Explore Apple's machine learning resources: Apple provides extensive documentation, tutorials, and sample
+        projects to help you learn Core ML. Start by visiting Apple's Core ML documentation (<a
+          href="https://developer.apple.com/documentation/coreml">https://developer.apple.com/documentation/coreml</a>).
+      </li>
+      <li>Get hands-on experience with Core ML: Create a simple app that uses a pre-trained machine learning model from
+        Apple's model library (<a
+          href="https://developer.apple.com/machine-learning/models/">https://developer.apple.com/machine-learning/models/</a>).
+        This will help you understand how to integrate a model into your app and how to use Core ML's APIs.</li>
+      <li>Learn about creating custom machine learning models: To create custom machine learning models for Core ML, you
+        can use Apple's Create ML tool (<a
+          href="https://developer.apple.com/documentation/createml">https://developer.apple.com/documentation/createml</a>).
+        This tool allows you to train models using your own data and export them for use in Core ML.</li>
+      <li>Dive deeper into advanced topics: Once you have a solid understanding of Core ML's basics, you can explore
+        more advanced topics like model optimization, on-device machine learning, and using Core ML with other Apple
+        frameworks like Vision, Natural Language, and ARKit.</li>
+      <li>Join the community: Join Apple's developer forums (<a
+          href="https://developer.apple.com/forums/">https://developer.apple.com/forums/</a>) to ask questions, share
+        your knowledge, and learn from other developers. You can also attend Apple developer events and conferences to
+        network with other developers and learn about the latest developments in Core ML.</li>
+      <li>Stay up-to-date with the latest releases: Apple regularly updates Core ML with new features and improvements.
+        Keep up-to-date with the latest releases by following Apple's developer news and announcements.</li>
+
+      <li><a href="CoreML.swift">CoreML.swift</a></li>
+    </ul>
+
+
+
+    <ul>
+      <li><a class="nav3" href="#top">gotoTop</a></li>
+    </ul>
+  </div>
+  <!---->
+
+  <!---->
+  <div id="adn" class="content-div">
+    <h2>Ordinateurs à ADN</h2>
+    <ul>
+      <li><a
+          href="https://www.polytechnique-insights.com/tribunes/science/lordinateur-a-adn-super-disque-dur-du-futur/?utm_source=Polytechnique+Insights+%28français%29&utm_campaign=047825ebfd-EMAIL_CAMPAIGN_2024_06_12_FR_COPY_01&utm_medium=email&utm_term=0_-bf0bd5a865-%5BLIST_EMAIL_ID%5D">Ordinateurs
+          à ADN</a></li>
+      <li><img src="isoftway/beribee.png" alt="tresse" width="256px"></li>
+      <li>Les ordinateurs à ADN exploitent les capacités computationnelles des cellules en remplaçant le code binaire
+        par un code à quatre unités, ATCG.</li>
+      <li>Leur potentiel dépasse le simple stockage grâce à des enzymes et des machineries cellulaires.</li>
+      <li>L'ADN conserve les informations pendant des milliers d'années sans apport d'énergie, ce qui en fait une
+        solution plus durable et biodégradable.</li>
+      <li>La technologie ne s'arrêtera pas là ; avec une enzyme qui peut éditer les bases, une séquence d'ADN et une
+        machinerie cellulaire, on dispose déjà d'un ordinateur à ADN.</li>
+      <li>L'architecture de tels systèmes est un défi majeur ; c'est ce dont les ordinateurs à ADN ont besoin
+        aujourd'hui : d'une architecture permettant aux processeurs de communiquer aux mémoires vives (RAM).</li>
+      <li>Les molécules d'ADN sont des mémoires et peuvent être utilisées comme microprocesseurs pour contrôler l'accès
+        et la lecture de différentes régions du génome.</li>
+      <li>Cette technologie pourrait aider à percer le secret de la vie, même si elle n'aboutit jamais ; en effet, la
+        recherche menée pour les imaginer sera très instructive sur le fonctionnement du vivant.</li>
+      <li>Les ordinateurs à ADN nous aideraient également à communiquer avec les autres formes de vie, notamment en
+        produisant des transformations héritables dans ces ordinateurs à ADN.</li>
+      <li>Cependant, cette technologie soulève des enjeux éthiques majeurs, notamment avec son potentiel pour la
+        transhumanité et l'invisibilité de son implémentation du point de vue des non spécialistes.</li>
+      <li><a class="nav3" href="#top">gotoTop</a></li>
+    </ul>
+  </div>
+  <!---->
+  <div id="olympe" class="content-div">
+    <h2>Mont Olympe</h2>
+    <ul>
+      <li>
+        <strong>Nom du glacier :</strong> Le glacier qui recouvre le mont Olympe s'appelle le Blue Glacier
+      </li>
+      <li>
+        <strong>État actuel :</strong> Le Blue Glacier est en régression. Il a perdu environ 325 pieds (100 mètres) de
+        son terminus entre 1995 et 2006. De plus, son volume de glace a diminué d'au moins 15 % entre 1987 et 2009.
+        Cette régression est une conséquence directe du réchauffement climatique.
+      </li>
+      <li>
+        <strong>Nature et composition de la terre :</strong> Le mont Olympe présente un relief escarpé avec des arêtes
+        étroites et de profonds ravins, résultat de l'érosion intense due aux cycles climatiques anciens et récents. La
+        partie supérieure de la montagne est principalement rocheuse et recouverte de neige la majeure partie de
+        l'année.
+      </li>
+      <li>
+        <strong>Intérêt pour les géologues :</strong> Les géologues s'intéressent au Blue Glacier pour comprendre
+        comment les glaciers ont façonné la région au fil du temps. Ils étudient également l'évolution des glaciers
+        depuis la période paléolithique jusqu'à nos jours pour reconstituer l'histoire climatique.
+      </li>
+      <li>
+        <strong>Intérêt pour les archéologues :</strong> Les archéologues sont intéressés par le Blue Glacier pour
+        explorer l'histoire des premiers explorateurs et des Indiens natifs de la péninsule. Ils cherchent également à
+        relier l'évolution du climat à l'histoire et à la culture des civilisations anciennes.
+      </li>
+      <li><a
+          href="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Blue_Glacier_Mount_Olympus.jpeg/500px-Blue_Glacier_Mount_Olympus.jpeg">Blue
+          Glacier</a>
+        <a
+          href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Mount_Olympus_Blue_Glacier_from_Lateral_Moraine_Panorama.jpg/500px-Mount_Olympus_Blue_Glacier_from_Lateral_Moraine_Panorama.jpg">Blue
+          Glacier from Lateral Moraine</a>
+      </li>
+      <li><a class="nav3" href="#top">gotoTop</a></li>
+    </ul>
+  </div>
+  <!---->
+
+  <!---->
+  <div id="porphyrion" class="content-div">
+    <ul>
+      <h2>Le trou noir Porphyrion</h2>
+      <ul>
+        <li><strong>Découverte et caractéristiques générales</strong>
+          <ul>
+            <li><a
+                href="https://www.perplexity.ai/search/de-maniere-detaillee-exhaustiv-yWgopwYDQEeTc4iRRHWzTw">Porphyrion</a>
+            </li>
+            <li><img src="isoftway/porphyrion.png" alt="Porphyrion"></li>
+            <li>Découvert par une équipe internationale d'astronomes dirigée par Martijn Oei de Caltech</li>
+            <li>Observé grâce au réseau de radiotélescopes LOFAR (Low-Frequency Array)</li>
+            <li>Situé dans une galaxie à environ 7,5 milliards d'années-lumière de la Terre</li>
+            <li>La galaxie hôte est 10 fois plus massive que la Voie Lactée</li>
+            <li>Nommé d'après Porphyrion, un géant de la mythologie grecque, en raison de sa taille exceptionnelle</li>
+          </ul>
+        </li>
+        <li><strong>Jets de matière et d'énergie</strong>
+          <ul>
+            <li>Deux jets massifs éjectés par le trou noir supermassif</li>
+            <li>Longueur totale : 23 millions d'années-lumière</li>
+            <li>140 fois le diamètre de la Voie Lactée</li>
+            <li>30% plus grands que les jets précédemment documentés</li>
+            <li>Composés de particules subatomiques (électrons, positrons) et de champs magnétiques</li>
+            <li>Se déplacent à une vitesse proche de celle de la lumière</li>
+            <li>Puissance combinée équivalente à des billions de soleils</li>
+          </ul>
+        </li>
+        <li><strong>Formation et évolution</strong>
+          <ul>
+            <li>Formés lorsque l'univers avait environ 6,3 milliards d'années (moins de la moitié de son âge actuel)
+            </li>
+            <li>Développement sur une période d'environ un milliard d'années</li>
+            <li>Nécessite un afflux continu de matière équivalent à la masse du Soleil chaque année</li>
+            <li>Résultat de l'accrétion de matière magnétisée par le trou noir en rotation</li>
+          </ul>
+        </li>
+        <li><strong>Impact sur l'environnement cosmique</strong>
+          <ul>
+            <li>Transport d'énergie, de particules et de champs magnétiques dans la toile cosmique</li>
+            <li>Potentiel de chauffage du gaz interstellaire, entravant la formation de nouvelles étoiles</li>
+            <li>Influence possible sur la dynamique de l'évolution cosmique</li>
+            <li>Pourrait avoir contribué à la magnétisation du vide cosmique</li>
+            <li>Interaction avec les filaments et les vides de la structure cosmique à grande échelle</li>
+          </ul>
+        </li>
+        <li><strong>Implications scientifiques</strong>
+          <ul>
+            <li>Remet en question la compréhension de l'influence des trous noirs sur l'univers</li>
+            <li>Suggère que les jets des trous noirs peuvent atteindre l'échelle des principales structures cosmiques
+            </li>
+            <li>Indique que les trous noirs en mode radiatif peuvent également produire des jets extrêmement longs</li>
+            <li>Ouvre de nouvelles perspectives sur la distribution de matière et d'énergie dans le cosmos</li>
+          </ul>
+        </li>
+        <li><strong>Perspectives futures</strong>
+          <ul>
+            <li>Possibilité de découvrir d'autres jets de taille égale ou supérieure</li>
+            <li>Utilisation future du Square Kilometer Array pour de nouvelles découvertes</li>
+            <li>Recherches en cours sur l'influence des jets sur la toile cosmique et la formation des galaxies</li>
+            <li><a class="nav3" href="#top">gotoTop</a></li>
+          </ul>
+
+  </div>
+  <!---->
+  <div id="alzheimer" class="content-div">
+    <ul>
+      <li><strong>Guide Détaillé de la Maladie d'Alzheimer</strong></li>
+      <li><strong>1. Premiers signes et progression</strong>
+        <ul>
+          <li>Troubles de la mémoire à court terme</li>
+          <li>Difficultés à planifier ou résoudre des problèmes</li>
+          <li>Problèmes d'exécution de tâches familières</li>
+          <li>Confusion temporelle ou spatiale</li>
+          <li>Difficultés avec les images visuelles et les relations spatiales</li>
+          <li>Problèmes de langage (parlé ou écrit)</li>
+          <li>Égarement d'objets et incapacité à retracer ses pas</li>
+          <li>Jugement altéré</li>
+          <li>Retrait social et professionnel</li>
+          <li>Changements d'humeur et de personnalité</li>
+        </ul>
+      </li>
+      <li><strong>2. Progression à un âge avancé</strong>
+        <ul>
+          <li>Perte de mémoire sévère</li>
+          <li>Incapacité à reconnaître les proches</li>
+          <li>Dépendance totale pour les activités quotidiennes</li>
+          <li>Problèmes de déglutition</li>
+          <li>Perte de contrôle des sphincters</li>
+          <li>Perte de mobilité</li>
+          <li>Troubles du sommeil sévères</li>
+          <li>Comportements agressifs ou paranoïaques</li>
+          <li>Hallucinations</li>
+          <li>Complications médicales (infections, pneumonies)</li>
+        </ul>
+      </li>
+      <li><strong>3. Changements au niveau cérébral</strong>
+        <ul>
+          <li>Accumulation de plaques amyloïdes (protéine bêta-amyloïde)</li>
+          <li>Formation d'enchevêtrements neurofibrillaires (protéine Tau hyperphosphorylée)</li>
+          <li>Atrophie cérébrale progressive</li>
+          <li>Perte de connexions synaptiques</li>
+          <li>Dégénérescence neuronale</li>
+          <li>Inflammation chronique</li>
+          <li>Dysfonctionnement mitochondrial</li>
+          <li>Stress oxydatif accru</li>
+          <li>Perturbation de l'homéostasie calcique</li>
+          <li>Altération de la barrière hémato-encéphalique</li>
+        </ul>
+      </li>
+      <li><strong>4. Mécanismes moléculaires</strong>
+        <ul>
+          <li>Clivage anormal de la protéine précurseur de l'amyloïde (APP)</li>
+          <li>Hyperphosphorylation de la protéine Tau</li>
+          <li>Dysfonctionnement du système ubiquitine-protéasome</li>
+          <li>Altération de l'autophagie</li>
+          <li>Perturbation de la signalisation insulinique cérébrale</li>
+          <li>Dérégulation de la protéostasie</li>
+          <li>Altération du métabolisme lipidique</li>
+          <li>Dysfonctionnement de la chaîne respiratoire mitochondriale</li>
+          <li>Activation chronique de la microglie et des astrocytes</li>
+          <li>Perturbation de la plasticité synaptique</li>
+        </ul>
+      </li>
+      <li><strong>5. Traitements actuels</strong>
+        <ul>
+          <li>Inhibiteurs de la cholinestérase (donnépézil, rivastigmine, galantamine)</li>
+          <li>Antagonistes des récepteurs NMDA (mémantine)</li>
+          <li>Aducanumab (Aduhelm) - anticorps monoclonal ciblant les plaques amyloïdes</li>
+          <li>Antipsychotiques pour gérer les symptômes comportementaux</li>
+          <li>Antidépresseurs pour traiter la dépression associée</li>
+          <li>Thérapies non médicamenteuses (stimulation cognitive, exercice physique)</li>
+          <li>Gestion des comorbidités (hypertension, diabète, hypercholestérolémie)</li>
+          <li>Suppléments nutritionnels (vitamines B, D, E, oméga-3)</li>
+          <li>Thérapie par lumière pour réguler le rythme circadien</li>
+          <li>Musicothérapie pour améliorer l'humeur et la cognition</li>
+        </ul>
+      </li>
+      <li><strong>6. Approches thérapeutiques en développement</strong>
+        <ul>
+          <li>Immunothérapies ciblant la protéine Tau</li>
+          <li>Inhibiteurs de BACE1 pour réduire la production de bêta-amyloïde</li>
+          <li>Modulateurs de la gamma-sécrétase</li>
+          <li>Thérapies anti-inflammatoires ciblées</li>
+          <li>Agents neuroprotecteurs</li>
+          <li>Therapies géniques</li>
+          <li>Stimulation cérébrale profonde</li>
+          <li>Thérapies à base de cellules souches</li>
+          <li>Approches basées sur le microbiome intestinal</li>
+          <li>Nanotechnologies pour la délivrance ciblée de médicaments</li>
+        </ul>
+      </li>
+      <li><strong>7. Conseils pour les patients et les aidants</strong>
+        <ul>
+          <li>Établir une routine quotidienne structurée</li>
+          <li>Adapter l'environnement pour plus de sécurité et de confort</li>
+          <li>Encourager l'activité physique régulière</li>
+          <li>Stimuler mentalement par des jeux, puzzles, et activités créatives</li>
+          <li>Maintenir une alimentation équilibrée et une bonne hydratation</li>
+          <li>Favoriser les interactions sociales</li>
+          <li>Utiliser des aide-mémoires et des technologies d'assistance</li>
+          <li>Pratiquer des techniques de relaxation et de gestion du stress</li>
+          <li>Participer à des groupes de soutien</li>
+          <li>Planifier l'avenir et les soins à long terme</li>
+        </ul>
+      </li>
+      <li><strong>8. Prévention et facteurs de risque modifiables</strong>
+        <ul>
+          <li>Maintenir une activité physique régulière</li>
+          <li>Adopter une alimentation de type méditerranéen</li>
+          <li>Stimuler son cerveau par l'apprentissage continu</li>
+          <li>Gérer les facteurs de risque cardiovasculaire</li>
+          <li>Maintenir une vie sociale active</li>
+          <li>Assurer un sommeil de qualité</li>
+          <li>Éviter le tabagisme et limiter la consommation d'alcool</li>
+          <li>Gérer le stress chronique</li>
+          <li>Traiter la dépression</li>
+          <li>Protéger contre les traumatismes crâniens</li>
+          <li><a class="nav3" href="#top">gotoTop</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <!---->
+
+  <!---->
+  <div id="adnmitochondrial" class="content-div">
+    <h2>Le génome et l'insertion d'ADN mitochondrial</h2>
+
+    <ul>
+      <li><a href="https://www.perplexity.ai/search/quelle-est-la-definition-du-ge-arR1VqKST_mNRE2MykKkAQ">Le génome et
+          l'insertion d'ADN mitochondrial</a></li>
+      <li><img src="isoftway/mitochondrie.png" alt="mitochondrie" width="256px"></li>
+      <li><strong>Structure et organisation du génome</strong></li>
+      <ul>
+        <li><strong>ADN nucléaire</strong></li>
+        <ul>
+          <li>Le génome est principalement constitué de l'ADN contenu dans le noyau des cellules eucaryotes.</li>
+          <li>Cet ADN est organisé en chromosomes, qui sont des structures complexes d'ADN et de protéines
+            (principalement des histones).</li>
+          <li> chez l'humain, le génome nucléaire comprend 23 paires de chromosomes[4].</li>
+        </ul>
+      </ul>
+
+      <li><strong>ADN mitochondrial</strong></li>
+      <ul>
+        <li>En plus de l'ADN nucléaire, les cellules eucaryotes possèdent également un génome mitochondrial.</li>
+        <li>Chez l'humain, l'ADN mitochondrial (ADNmt) est une molécule circulaire d'environ 16 569 paires de bases,
+          contenant 37 gènes[4].</li>
+      </ul>
+
+      <li><strong>Composition génique</strong></li>
+      <ul>
+        <li>Le génome humain contient environ 20 000 à 25 000 gènes codant pour des protéines.</li>
+        <li>Cependant, les séquences codantes ne représentent qu'une petite partie du génome (environ 1-2%).</li>
+        <li>Le reste est constitué de séquences non codantes, dont le rôle est de plus en plus étudié[4][5].</li>
+      </ul>
+
+      <li><strong>Insertion d'ADN mitochondrial dans le génome nucléaire</strong></li>
+      <ul>
+        <li>Il existe effectivement des preuves de l'insertion d'ADN mitochondrial dans le génome nucléaire, y compris
+          dans les cellules du cerveau.</li>
+        <li>Ce phénomène est appelé "transfert de gènes mitochondriaux nucléaires" (NUMT).</li>
+
+        <ul>
+          <li><strong>Mécanisme d'insertion</strong></li>
+          <ul>
+            <li>Les fragments d'ADN mitochondrial peuvent s'insérer dans le génome nucléaire lors de la réparation des
+              cassures double-brin de l'ADN.</li>
+            <li>Ce processus peut se produire dans divers types cellulaires, y compris les neurones[2].</li>
+          </ul>
+
+          <li><strong>Fréquence et importance</strong></li>
+          <ul>
+            <li>Plus de 200 fragments génétiques d'origine mitochondriale ont été mis en évidence dans le génome
+              nucléaire humain.</li>
+            <li>Certains de ces fragments ont été trouvés chez une partie ou chez la totalité des individus étudiés[2].
+            </li>
+          </ul>
+
+          <li><strong>Rôles potentiels des insertions mitochondriales</strong></li>
+          <ul>
+            <li><strong>Potentiel mutagène</strong></li>
+            <ul>
+              <li>Ces insertions sont potentiellement mutagènes et peuvent être associées à des pathologies graves.
+                Elles pourraient jouer un rôle dans le développement de certaines maladies, notamment des cancers[2].
+              </li>
+            </ul>
+
+            <li><strong>Évolution du génome</strong></li>
+            <ul>
+              <li>Les insertions d'ADN mitochondrial contribuent à la dynamique évolutive du génome. Elles peuvent
+                participer aux remaniements chromosomiques et à la diversification génétique au cours de l'évolution[3].
+              </li>
+            </ul>
+
+            <li><strong>Impact sur l'expression génique</strong></li>
+            <ul>
+              <li>L'insertion de séquences mitochondriales pourrait influencer l'expression des gènes nucléaires
+                environnants, soit en perturbant leur structure, soit en introduisant de nouveaux éléments
+                régulateurs[1].</li>
+            </ul>
+
+            <li><strong>Rôle dans les maladies neurodégénératives</strong></li>
+            <ul>
+              <li>Dans le contexte des cellules cérébrales, ces insertions pourraient potentiellement contribuer à la
+                pathogenèse de certaines maladies neurodégénératives, bien que cette hypothèse nécessite davantage de
+                recherches pour être confirmée[1].</li>
+            </ul>
+
+            </li>
+          </ul>
+
+          </li>
+
+          <li><strong>Implications pour la recherche et la médecine</strong></li>
+          <ul>
+            <li>Développement de nouveaux outils diagnostiques, notamment dans le domaine du cancer[2].</li>
+            <li>Meilleure évaluation des risques liés aux radiations, qui peuvent augmenter la fréquence de ces
+              insertions[2].</li>
+            <li>Approfondissement de notre compréhension de l'évolution du génome et des mécanismes de réparation de
+              l'ADN[3].</li>
+            <li>Potentiel développement de nouvelles stratégies thérapeutiques pour les maladies liées aux
+              dysfonctionnements mitochondriaux[1].</li>
+          </ul>
+
+        </ul>
+
+
+        <p>Citations:</p>
+        <ul>
+          <li><a
+              href="https://www.medecinesciences.org/en/articles/medsci/full_html/2014/12/medsci20143012p1101/medsci20143012p1101.html">[1]
+            </a>
+          </li>
+          <li><a href="https://www.pasteur.fr/fr/genome-humain-nouveau-phenomene-mutagene-devoile">[2]</a></li>
+          <li><a
+              href="https://www.medecinesciences.org/en/articles/medsci/full_html/2002/10/medsci20021812p1173/medsci20021812p1173.html">[3]</a>
+          </li>
+          <li><a href="https://fr.wikipedia.org/wiki/G%C3%A9nome_mitochondrial_humain">[4]</a></li>
+          <li><a href="https://fr.wikipedia.org/wiki/G%C3%A8ne">[5]</a></li>
+          <li><a
+              href="https://www.medecinesciences.org/en/articles/medsci/full_html/2010/09/medsci20102610p783/medsci20102610p783.html">[6]</a>
+          </li>
+          <li><a href="https://www.youtube.com/watch?v=pnYNsbCWBLg">[7]</a></li>
+          <li><a
+              href="https://www.echosciences-paysdelaloire.fr/articles/adn-mitochondrial-un-petit-genome-au-coeur-du-vieillissement">[8]</a>
+          </li>
+          <li><a class="nav3" href="#top">gotoTop</a></li>
+
+        </ul>
+  </div>
+  <!---->
+
+  <!---->
+  <div id="torquemada" class="content-div">
+    <h2>Torquemada</h2>
+    <ul>
+      <li><strong>Naissance et origines :</strong>
+        <ul>
+          <li>Né en 1420 à Valladolid, en Espagne</li>
+          <li>Issu d'une famille de conversos (juifs convertis au christianisme)</li>
+          <li>Son oncle, Juan de Torquemada, était un cardinal influent</li>
+        </ul>
+      </li>
+
+      <li><strong>Enfance et éducation :</strong>
+        <ul>
+          <li>Grandit dans un contexte de tensions religieuses et sociales</li>
+          <li>Probablement témoin de discriminations envers les conversos</li>
+          <li>Éduqué dans un environnement religieux strict</li>
+          <li>Entre dans l'ordre dominicain à un jeune âge</li>
+        </ul>
+      </li>
+
+      <li><strong>Ascension au sein de l'Église :</strong>
+        <ul>
+          <li>Devient prieur du monastère de Santa Cruz à Ségovie</li>
+          <li>Se fait remarquer pour son zèle religieux et son intégrité</li>
+          <li>Nommé confesseur de la princesse Isabelle de Castille en 1469</li>
+        </ul>
+      </li>
+
+      <li><strong>Rôle dans l'Inquisition espagnole :</strong>
+        <ul>
+          <li>Participe à la création de l'Inquisition espagnole en 1478</li>
+          <li>Nommé Inquisiteur Général en 1483 par le pape Sixte IV</li>
+          <li>Développe les procédures et règles de l'Inquisition</li>
+        </ul>
+      </li>
+
+      <li><strong>Actions en tant qu'Inquisiteur Général :</strong>
+        <ul>
+          <li>Dirige les tribunaux inquisitoriaux à travers l'Espagne</li>
+          <li>Supervise l'expulsion des Juifs d'Espagne en 1492</li>
+          <li>Responsable de nombreux procès, tortures et exécutions</li>
+          <li>Estime-t-on, environ 2000 personnes auraient été exécutées sous son mandat</li>
+        </ul>
+      </li>
+
+      <li><strong>Motivations psychologiques potentielles :</strong>
+        <ul>
+          <li>Complexe lié à ses origines conversos, poussant à prouver sa foi</li>
+          <li>Crainte profonde de l'hérésie, vue comme une menace pour l'unité de l'Espagne</li>
+          <li>Conviction sincère d'agir pour le bien de l'Église et du royaume</li>
+          <li>Possible traumatisme lié à l'expérience de discrimination dans sa jeunesse</li>
+        </ul>
+      </li>
+
+      <li><strong>Héritage et impact :</strong>
+        <ul>
+          <li>Figure controversée, symbole de l'intolérance religieuse</li>
+          <li>A joué un rôle clé dans l'unification religieuse de l'Espagne</li>
+          <li>Son nom est devenu synonyme de fanatisme et de cruauté</li>
+          <li>A influencé la politique et la société espagnole pendant des siècles</li>
+        </ul>
+      </li>
+
+      <li><strong>Mort et postérité :</strong>
+        <ul>
+          <li>Décédé le 16 septembre 1498 à Ávila</li>
+          <li>Sa tombe a été profanée pendant les guerres napoléoniennes</li>
+          <li>Continue d'être un sujet de débat historique et éthique</li>
+        </ul>
+      </li>
+      <li><a href="#top">gotoTop</a></li>
+
+    </ul>
+  </div>
+  <!---->
+
+  <!---->
+  <div id="ukraine" class="content-div">
+    <ul>
+      <li>L'antisémitisme en Ukraine a une longue et complexe histoire, remontant à plusieurs siècles, profondément
+        marquée par des périodes de violence, de marginalisation et d'extermination, ainsi que des moments de
+        coexistence. Voici une analyse détaillée du phénomène de l'antisémitisme en Ukraine, de son histoire à la
+        période contemporaine.</li>
+    </ul>
+
+
+
+    <ul>
+      <li><strong>1. Histoire de l'antisémitisme en Ukraine</strong></li>
+      <li><strong>Les débuts : des discriminations aux pogroms</strong>
+        <ul>
+          <li>L'antisémitisme en Ukraine s'ancre dans des tensions sociales, économiques et religieuses qui ont traversé
+            la région depuis le Moyen Âge. Durant la période du <strong>Grand-Duché de Lituanie</strong> et de la
+            <strong>Pologne-Lituanie</strong>, les Juifs formaient une communauté relativement prospère, souvent
+            employée comme collecteurs d'impôts, marchands et gestionnaires de biens pour la noblesse polonaise.
+            Cependant, cette position de médiateur entre les classes populaires ukrainiennes et les seigneurs a
+            contribué à leur stigmatisation.
+          </li>
+          <li>Le point culminant de cette tension a eu lieu lors du <strong>soulèvement de Khmelnytsky</strong>
+            (1648-1657). Mené par les Cosaques contre la domination polonaise, ce soulèvement est marqué par des
+            massacres massifs de Juifs et de Polonais en Ukraine. Des milliers de Juifs sont tués ou déplacés, et cela
+            laisse une empreinte indélébile dans la mémoire collective juive. Ces événements sont souvent qualifiés de
+            premiers "pogroms" de grande envergure en Ukraine.</li>
+        </ul>
+      </li>
+
+      <li><strong>L'Empire russe et les pogroms du XIXe siècle</strong>
+        <ul>
+          <li>Avec l'annexion de l'Ukraine par l'Empire russe à la fin du XVIIIe siècle, les Juifs se trouvent dans la
+            <strong>Pale de colonisation</strong>, une zone délimitée où les Juifs étaient autorisés à vivre. Cette
+            situation crée une concentration importante de la population juive, en particulier dans les grandes villes
+            telles que Kiev, Odessa, et dans des villages plus petits appelés <strong>shtetls</strong>.
+          </li>
+          <li>Le XIXe siècle est marqué par une montée de l'antisémitisme, souvent encouragée par l'État russe,
+            notamment après l'assassinat du tsar Alexandre II en 1881, qui fut suivi de pogroms dans plusieurs villes de
+            l'Empire, notamment à <strong>Odessa, Kiev, et Yekaterinoslav</strong> (aujourd'hui Dnipro).</li>
+        </ul>
+      </li>
+
+      <li><strong>L'Holocauste en Ukraine</strong>
+        <ul>
+          <li>La période la plus tragique pour les Juifs d'Ukraine survient pendant la <strong>Seconde Guerre
+              mondiale</strong> avec l'occupation nazie.</li>
+          <li><strong>Le massacre de Babi Yar</strong> : En <strong>septembre 1941</strong>, environ <strong>33 000
+              Juifs sont fusillés</strong> en l'espace de deux jours par les Nazis et leurs collaborateurs locaux près
+            de Kiev.</li>
+        </ul>
+      </li>
+    </ul>
+
+
+
+    <ul>
+      <li><strong>2. Antisémitisme en Ukraine contemporaine</strong></li>
+      <li><strong>L'héritage soviétique</strong> : Sous le régime soviétique, l'antisémitisme prend des formes plus
+        subtiles mais reste présent. Après la Seconde Guerre mondiale, les Juifs d'Ukraine font face à des restrictions
+        religieuses et à une campagne anti-sioniste.</li>
+
+      <li><strong>L'indépendance de l'Ukraine et la période post-soviétique</strong> : Depuis 1991, les incidents
+        antisémites ont diminué, et les relations diplomatiques avec Israël se sont améliorées.</li>
+
+      <li><strong>L'antisémitisme pendant la guerre russo-ukrainienne</strong> : L'antisémitisme a été utilisé comme un
+        outil de propagande, mais les accusations d'antisémitisme généralisé sont souvent réfutées par la communauté
+        juive ukrainienne.</li>
+    </ul>
+
+
+
+    <ul>
+      <li><strong>3. Antisémitisme : ville ou campagne ?</strong></li>
+      <li>Historiquement, les pogroms et les actes antisémites ont souvent eu lieu dans les <strong>villes</strong>, où
+        la population juive était plus concentrée. Aujourd'hui, la majorité de la population juive restante en Ukraine
+        vit dans les grandes villes, où se concentrent également les incidents antisémites.</li>
+    </ul>
+
+
+
+    <ul>
+
+      <li><strong>4. Conclusion</strong></li>
+      <li>L'antisémitisme en Ukraine a des racines historiques profondes, mais la situation s'est améliorée
+        depuisl'indépendance en 1991.</li>
+      <li><a class="nav3" href="#top">gotoTop</a></li>
+
+    </ul>
+  </div>
+  <!---->
+
+
+  <!---->
+  <div id="deepfake" class="content-div">
+    <ul>
+      <li>Un <strong>deepfake</strong> (ou <strong>hypertrucage</strong> en français) désigne une technique de
+        manipulation numérique qui utilise des algorithmes d'intelligence artificielle (IA), en particulier les réseaux
+        de neurones profonds (d'où le terme "deep"), pour créer des images, des vidéos ou des enregistrements audio très
+        réalistes, mais entièrement falsifiés.</li>
+      <li>La technologie sous-jacente repose souvent sur des <strong>réseaux antagonistes génératifs (GAN)</strong>, où
+        deux réseaux de neurones s'entraînent mutuellement. L'un, le générateur, produit du contenu (par exemple, un
+        visage synthétique), tandis que l'autre, le discriminateur, essaie de distinguer entre les contenus réels et
+        faux. Avec le temps, le générateur s'améliore jusqu'à ce que le contenu créé soit presque indiscernable du réel.
+      </li>
+      <li>Les deepfakes sont devenus célèbres pour leur capacité à remplacer un visage dans une vidéo par celui d'une
+        autre personne, ce qui peut créer des fausses vidéos réalistes de personnalités publiques, des acteurs ou
+        d'autres personnes. Ils posent des défis éthiques et des problèmes en matière de désinformation, de fraude, de
+        chantage, ou encore de violation de la vie privée.</li>
+      <li><a class="nav3" href="#top">gotoTop</a></li>
+    </ul>
+  </div>
+  <!---->
+
+
+  <!---->
+  <div id="ombre" class="content-div">
+    <ul>
+      <li><a href="https://youtu.be/QKuNGsWKdck?si=GkCAgCBUC2UEDewg">PS: baguette magique</a></li>
+      <li><a href="https://youtu.be/5L9GCf7BXmY?si=vkJWKijjsVScagbb">PS: cheveux</a></li>
+      <li><a href="https://youtu.be/XHaZKt4MF7k?si=oGOpec6gD_aBPygK">PS: ombre</a></li>
+    </ul>
+  </div>
+  <!---->
+
+
+  <!---->
+  <div id="1789" class="content-div">
+
+    <ul>
+      <li>Introduction
+        <ul>
+          <li>Contexte historique : Présentation de la France avant la Révolution (société, économie, politique).</li>
+          <li>Problématique : Quelles sont les causes profondes et immédiates de la Révolution française ? Comment
+            s'est-elle déroulée et quelles en ont été les conséquences ?</li>
+        </ul>
+      </li>
+      <li>Les origines de la Révolution française
+
+      <li>Contexte social
+        <ul>
+          <li>
+
+          <li>Rôle des Sociétés de Pensée
+            <ul>
+              <li>Élites intellectuelles :
+                <ul>
+                  <li>Cochin a souligné que les Sociétés de Pensée étaient souvent composées d'hommes de loi,
+                    d'avocats et de magistrats, formant une élite intellectuelle.</li>
+                  <li>Ces groupes jouaient un rôle crucial dans la formulation et la diffusion des idées politiques
+                    et sociales.</li>
+                </ul>
+              </li>
+              <li>Transmission des idées :
+                <ul>
+                  <li>Ces sociétés servaient de plateformes pour discuter et propager des idées éclairées, notamment
+                    celles des Lumières.</li>
+                  <li>Elles remettaient en question l'autorité monarchique et les structures sociales
+                    traditionnelles.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Cahiers de Doléances
+            <ul>
+              <li>Instrument de la Révolution :
+                <ul>
+                  <li>Les Cahiers de Doléances, bien que rédigés par un peuple souvent peu instruit, étaient
+                    influencés par les idées des Sociétés de Pensée.</li>
+                  <li>Les revendications dans ces cahiers reflétaient les préoccupations des classes populaires,
+                    mais étaient aussi le résultat d'une élaboration intellectuelle par les élites.</li>
+                </ul>
+              </li>
+              <li>Éducation politique :
+                <ul>
+                  <li>Ces cahiers représentaient une forme d'éducation politique, traduisant les idées des élites en
+                    revendications populaires.</li>
+                  <li>Ils permettaient une certaine appropriation des concepts politiques par le peuple.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Diffusion rapide des idées
+            <ul>
+              <li>Réseaux de communication :
+                <ul>
+                  <li>Cochin a observé que la diffusion des idées révolutionnaires était facilitée par les réseaux
+                    de communication des Sociétés de Pensée.</li>
+                  <li>Les membres, en tant qu'avocats et magistrats, avaient des connexions dans diverses régions,
+                    permettant une propagation rapide des idées.</li>
+                </ul>
+              </li>
+              <li>Mobilisation des masses :
+                <ul>
+                  <li>La capacité des Sociétés de Pensée à mobiliser les masses était clé dans la rapidité de la
+                    diffusion des idées révolutionnaires.</li>
+                  <li>Les discussions au sein de ces sociétés ont contribué à créer un climat d'opinion favorable à
+                    la Révolution.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Critique de la Révolution
+            <ul>
+              <li>Ambivalence :
+                <ul>
+                  <li>Cochin avait une vision ambivalente de la Révolution, reconnaissant le rôle des Sociétés de
+                    Pensée tout en s'inquiétant des conséquences de cette diffusion.</li>
+                  <li>Il craignait que des idées radicales puissent être adoptées sans une compréhension adéquate de
+                    leur portée.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+      </li>
+      <li>A. La structure de la société française (les trois ordres : clergé, noblesse, tiers état).</li>
+      <li>B. Les inégalités sociales et économiques.</li>
+      <li>C. Les idées des Lumières et leur impact sur la pensée politique.</li>
+
+      </li>
+      <li>Contexte économique
+        <ul>
+          <li>A. La crise financière de l'État (dette, impôts, dépenses de la cour).</li>
+          <li>B. Les mauvaises récoltes et la crise alimentaire de 1788.</li>
+          <li>C. Les tensions entre les classes sociales exacerbées par la crise.</li>
+        </ul>
+      </li>
+      <li>Contexte politique
+        <ul>
+          <li>A. L'absolutisme royal et la centralisation du pouvoir.</li>
+          <li>B. Les échecs des réformes de Louis XVI (Turgot, Necker).</li>
+          <li>C. L'essor des mouvements politiques et des assemblées (les États généraux).</li>
+        </ul>
+      </li>
+    </ul>
+    </li>
+    <li>Le déclenchement de la Révolution
+      <ul>
+        <li>Les États généraux de 1789
+          <ul>
+            <li>A. Convocation et composition des États généraux.</li>
+            <li>B. Les revendications du tiers état.</li>
+            <li>C. La formation de l'Assemblée nationale.</li>
+          </ul>
+        </li>
+        <li>La prise de la Bastille (14 juillet 1789)
+          <ul>
+            <li>A. Symbolisme de la Bastille.</li>
+            <li>B. Événements entourant la prise.</li>
+            <li>C. Réactions à la prise de la Bastille.</li>
+          </ul>
+        </li>
+        <li>La Grande Peur et les réformes de l'été 1789
+          <ul>
+            <li>A. Les rumeurs et la panique dans les campagnes.</li>
+            <li>B. L'abolition des privilèges (4 août 1789).</li>
+            <li>C. La Déclaration des droits de l'homme et du citoyen (26 août 1789).</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Les phases de la Révolution française
+      <ul>
+        <li>La Révolution modérée (1789-1791)
+          <ul>
+            <li>A. La Constitution de 1791 et la monarchie constitutionnelle.</li>
+            <li>B. Les tensions entre le roi et l'Assemblée.</li>
+            <li>C. Les premières manifestations populaires (fête de la Fédération).</li>
+          </ul>
+        </li>
+        <li>La Révolution radicale (1792-1794)
+          <ul>
+            <li>A. La chute de la monarchie (10 août 1792).</li>
+            <li>B. La Convention nationale et la proclamation de la République.</li>
+            <li>C. La Terreur (1793-1794) : Robespierre et le Comité de salut public.</li>
+          </ul>
+        </li>
+        <li>La réaction thermidorienne et le Directoire (1794-1799)
+          <ul>
+            <li>A. La chute de Robespierre (27 juillet 1794).</li>
+            <li>B. Les difficultés économiques et politiques du Directoire.</li>
+            <li>C. L'ascension de Napoléon Bonaparte.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Les conséquences de la Révolution française
+      <ul>
+        <li>Conséquences politiques
+          <ul>
+            <li>A. La fin de l'absolutisme et l'émergence de nouvelles idées politiques.</li>
+            <li>B. L'impact sur les monarchies européennes et les mouvements révolutionnaires.</li>
+          </ul>
+        </li>
+        <li>Conséquences sociales
+          <ul>
+            <li>A. Les changements dans la structure sociale et les droits des citoyens.</li>
+            <li>B. L'impact sur les femmes et les minorités.</li>
+          </ul>
+        </li>
+        <li>Conséquences culturelles et idéologiques
+          <ul>
+            <li>A. La diffusion des idées révolutionnaires à travers l'Europe.</li>
+            <li>B. L'héritage de la Révolution dans la pensée politique moderne.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Conclusion
+      <ul>
+        <li>Synthèse des points abordés : Récapitulation des causes, du déroulement et des conséquences de la Révolution
+          française.</li>
+        <li>Réflexion finale : La Révolution française comme un tournant majeur dans l'histoire de France et du monde,
+          et son influence sur les révolutions ultérieures.</li>
+      </ul>
+    </li>
+    <li>Bibliographie
+      <ul>
+        <li>Ouvrages de référence sur la Révolution française.</li>
+        <li>Articles académiques et études récentes.</li>
+        <li>Sources primaires (documents d'époque, lettres, discours).</li>
+      </ul>
+    </li>
+    <li><a class="nav3" href="#top">gotoTop</a></li>
+
+    </ul>
+
+
+
+  </div>
+  <!---->
+
+  <!---->
+  <div id="bayes" class="content-div">
+
+    <ul>
+      <li>Le théorème de Thomas Bayes est une formule de probabilité qui permet de calculer la probabilité d'un
+        événement en fonction de sa probabilité a priori et de la probabilité d'autres événements qui lui sont liés.
+      </li>
+      <li>Imaginons que vous vouliez connaître la probabilité qu'une personne ait un certain type de maladie en
+        fonction d'un test de dépistage. Le théorème de Thomas Bayes vous permet de calculer cette probabilité en
+        utilisant les probabilités suivantes :</li>
+      <ul>
+        <li>La probabilité que la personne ait la maladie (probabilité a priori)</li>
+        <li>La probabilité que le test soit positif si la personne a la maladie (sensibilité du test)</li>
+        <li>La probabilité que le test soit négatif si la personne n'a pas la maladie (spécificité du test)</li>
+        <li>La probabilité que le test soit positif ou négatif (probabilité totale)</li>
+      </ul>
+      <li>La formule du théorème de Thomas Bayes est la suivante : P(A|B) = [P(B|A) * P(A)] / P(B)</li>
+      <li>Pour illustrer l'utilisation du théorème de Thomas Bayes, imaginons que la probabilité a priori de la
+        maladie est de 1%, que la sensibilité du test est de 95% et que la spécificité du test est de 99%. La
+        probabilité totale du test est de 99% + (1% * (100% - 95%)) = 99.95%.</li>
+      <li>Supposons que le test soit positif pour une personne. Nous voulons connaître la probabilité qu'elle ait la
+        maladie. Nous avons donc : P(maladie|test positif) = [P(test positif|maladie) * P(maladie)] / P(test
+        positif) = [0.95 * 0.01] / 0.0095 = 0.1005 (ou 10.05%)</li>
+      <li>Donc, même si le test est positif, la probabilité que la personne ait la maladie n'est que de 10.05%. Cela
+        montre l'importance de prendre en compte la probabilité a priori et la probabilité des autres événements
+        liés pour calculer la probabilité d'un événement donné.</li>
+      <li><a class="nav3" href="#top">gotoTop</a></li>
+
+    </ul>
+
+
+
+  </div>
+  <!---->
+
+  <!---->
+  <div id="tertullien" class="content-div">
+
+    <ul>
+      <li><strong>Origines</strong>
+        <ul>
+          <li>Tertullien, ou Tertullien, est né vers 155 à Carthage, en Afrique du Nord.</li>
+          <li>Issu d'une famille païenne, il a bénéficié d'une éducation de qualité, étudiant la rhétorique et le
+            droit.</li>
+          <li>Sa conversion au christianisme est généralement datée de la fin de sa trentaine.</li>
+        </ul>
+      </li>
+      <li><strong>Vie</strong>
+        <ul>
+          <li>Actif dans la communauté chrétienne de Carthage, il a été un membre influent de l'Église.</li>
+          <li>Critique virulent des hérésies, notamment le gnosticisme.</li>
+          <li>Un des premiers à utiliser le terme "Trinité" pour décrire la nature de Dieu.</li>
+        </ul>
+      </li>
+      <li><strong>Paroles et écrits notables</strong>
+        <ul>
+          <li><strong>Apologétique (Apologeticum)</strong>
+            <ul>
+              <li>Défense du christianisme contre les accusations de malfaisance.</li>
+              <li>Affirmation que les chrétiens sont des citoyens loyaux.</li>
+            </ul>
+          </li>
+          <li><strong>De l'âme (De Anima)</strong>
+            <ul>
+              <li>Exploration de la nature de l'âme humaine et de son immortalité.</li>
+              <li>Discussion sur la résurrection.</li>
+            </ul>
+          </li>
+          <li><strong>Contre Marcion (Adversus Marcionem)</strong>
+            <ul>
+              <li>Opposition aux idées de Marcion, un hérétique.</li>
+              <li>Défense de l'unité de Dieu et de l'importance de l'Ancien Testament.</li>
+            </ul>
+          </li>
+          <li><strong>De la prescription des hérétiques (De Praescriptione Haereticorum)</strong>
+            <ul>
+              <li>Soutien que les hérétiques ne peuvent pas revendiquer la vérité.</li>
+              <li>Importance de la continuité apostolique de l'Église.</li>
+            </ul>
+          </li>
+          <li><strong>Sur le baptême (De Baptismo)</strong>
+            <ul>
+              <li>Discussion sur l'importance et les effets du baptême.</li>
+              <li>Affirmation de son caractère essentiel pour le salut.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><strong>Influence et héritage</strong>
+        <ul>
+          <li>Influence considérable sur la théologie chrétienne et la pensée occidentale.</li>
+          <li>Style d'écriture incisif et utilisation habile du latin.</li>
+          <li>Considéré comme le "père de la littérature latine chrétienne".</li>
+          <li>Son travail a été étudié par de nombreux théologiens, influençant des figures comme Augustin
+            d'Hippone.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <ul>
+      <li>Tertullien était un écrivain chrétien du IIIe siècle, né en Afrique du Nord. Il est considéré comme l'un des
+        Pères de l'Église latine et a joué un rôle important dans le développement de la théologie chrétienne. Il
+        est surtout connu pour ses écrits polémiques contre les hérésies de son époque.</li>
+      <li>Quant à la question de savoir s'il était un imposteur, il n'y a aucune preuve historique permettant de
+        l'affirmer. Bien que certaines de ses opinions théologiques aient été controversées et qu'il ait été accusé
+        d'hérésie par certains de ses contemporains, cela ne signifie pas qu'il était un imposteur. Il est important
+        de noter que la compréhension de la théologie et de la doctrine chrétiennes a évolué au fil des siècles, et
+        ce qui était considéré comme hérétique à l'époque de Tertullien ne l'est plus nécessairement aujourd'hui.
+      </li>
+      <li>En résumé, Tertullien était un théologien chrétien important du IIIe siècle, et il n'y a aucune preuve
+        historique permettant de qualifier son travail ou sa personne d'imposture.</li>
+    </ul>
+
+    <ul>
+      <li>La question de l'origine et de la justification de la doctrine de la Trinité est complexe et a fait l'objet
+        de nombreux débats théologiques au cours des siècles.</li>
+      <li>Il n'existe pas de "raisonnement logique" au sens strict du terme pour justifier la Trinité. C'est un
+        mystère de la foi, une vérité révélée que les chrétiens acceptent par la foi plutôt que par une
+        démonstration rationnelle. La Trinité défie en effet toute explication exhaustive à l'aide des catégories de
+        la pensée humaine.</li>
+      <li>Cependant, il existe des éléments qui ont pu contribuer à sa formulation: <ul>
+          <li>Les Écritures: Les textes bibliques, notamment les Évangiles et les épîtres de Paul, contiennent des
+            passages qui évoquent la relation entre Dieu le Père, Jésus-Christ le Fils et le Saint-Esprit. Les
+            théologiens ont cherché à interpréter ces passages de manière cohérente, ce qui a conduit à
+            l'élaboration de la doctrine de la Trinité.</li>
+          <li>La philosophie: Les philosophes grecs, notamment Platon et Plotin, ont développé des concepts sur la
+            nature de l'unité et de la multiplicité qui ont pu influencer la pensée chrétienne.</li>
+          <li>Les besoins pastoraux: La doctrine de la Trinité a également répondu à des besoins pastoraux, en
+            offrant un cadre pour comprendre les mystères de la foi chrétienne et pour répondre aux questions
+            des fidèles.</li>
+        </ul>
+      </li>
+      <li>Le raisonnement qui a présidé à la formulation de la Trinité est donc plutôt d'ordre théologique et
+        spirituel que strictement logique. Il s'agit d'une tentative de donner un sens à l'expérience de Dieu telle
+        qu'elle est révélée dans les Écritures et dans la tradition de l'Église.</li>
+      <li>Pour résumer: <ul>
+          <li>La Trinité est un mystère de la foi, qui dépasse la compréhension humaine.</li>
+          <li>Elle s'appuie sur les Écritures et la tradition de l'Église.</li>
+          <li>Elle a été influencée par la philosophie grecque.</li>
+          <li>Elle répond à des besoins pastoraux.</li>
+        </ul>
+      </li>
+      <li>Il est important de noter que la doctrine de la Trinité a été élaborée progressivement au cours des premiers
+        siècles du christianisme et qu'elle a fait l'objet de nombreux débats. Les différentes confessions
+        chrétiennes ont proposé des formulations différentes de cette doctrine, tout en s'accordant sur
+        l'affirmation fondamentale de l'unité de Dieu en trois personnes.</li>
+      <li>Si vous souhaitez approfondir ce sujet, je vous invite à consulter des ouvrages de théologie ou à en
+        discuter avec un théologien.</li>
+      <li>Souhaitez-vous en savoir plus sur un aspect particulier de la doctrine de la Trinité ?</li>
+    </ul>
+
+    <ul>
+      <li>Paul Veyne et le Monisme : Une Perspective Nuancée</li>
+      <li>Paul Veyne, historien des religions et des mentalités antiques, a souvent abordé la question du monisme dans
+        ses travaux. Cependant, il est important de noter que Veyne n'a pas développé une théorie exhaustive du
+        monisme, et son utilisation de ce terme varie selon les contextes.</li>
+      <li>Le monisme dans la pensée de Veyne <ul>
+          <li>Pluralité des significations: Pour Veyne, le monisme ne renvoie pas à une conception unique et
+            statique. Il peut désigner : <ul>
+              <li>Une unité sous-jacente à la diversité: Une sorte de principe unificateur qui sous-tend la
+                multiplicité des phénomènes religieux, philosophiques ou sociaux.</li>
+              <li>Une réduction du multiple à l'un: Une tendance à ramener toute réalité à une seule substance
+                ou principe.</li>
+              <li>Une vision globale et synthétique: Une approche qui cherche à saisir les phénomènes dans
+                leur ensemble et dans leurs interrelations.</li>
+            </ul>
+          </li>
+          <li>Critique du réductionnisme: Veyne se méfiait des interprétations trop simplistes et réductionnistes
+            des religions anciennes. Il soulignait la complexité des croyances et des pratiques religieuses, et
+            refusait de les ramener à un seul principe explicatif.</li>
+          <li>Le monisme comme outil d'analyse: Le monisme, pour Veyne, était davantage un outil d'analyse qu'une
+            réalité ontologique. Il permettait de mettre en évidence des tendances et des dynamiques
+            sous-jacentes aux phénomènes religieux.</li>
+        </ul>
+      </li>
+      <li>Le monisme et l'histoire des religions <ul>
+          <li>Comparer les religions: Mettre en évidence les points communs et les différences entre les
+            différentes religions, en montrant comment elles cherchaient à donner un sens à l'expérience
+            humaine.</li>
+          <li>Analyser les évolutions religieuses: Étudier les transformations des croyances et des pratiques
+            religieuses au cours du temps, en montrant comment les religions pouvaient s'adapter à des contextes
+            sociaux et culturels changeants.</li>
+          <li>Dépasser les oppositions traditionnelles: Rejeter les oppositions manichéennes entre le sacré et le
+            profane, le religieux et le politique, en montrant comment ces catégories étaient souvent poreuses
+            et se transformaient mutuellement.</li>
+        </ul>
+      </li>
+      <li>En conclusion <ul>
+          <li>Le monisme de Veyne est un monisme nuancé, qui ne nie pas la diversité des phénomènes religieux mais
+            cherche à en saisir l'unité profonde. Il est un outil d'analyse précieux pour comprendre les
+            religions anciennes, mais il ne doit pas être confondu avec une doctrine philosophique rigide.</li>
+          <li>Pour approfondir votre compréhension du monisme chez Veyne, je vous suggère de consulter ses
+            ouvrages suivants: <ul>
+              <li>Le pain et le cirque</li>
+              <li>Comment on écrit l'histoire ancienne</li>
+              <li>Didon et Énée</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a class="nav3" href="#top">gotoTop</a></li>
+
+    </ul>
+
+  </div>
+  <!---->
+
+  <!---->
+  <div id="iphone" class="content-div">
+
+    <h2>Projet iPhone App</h2>
+    <ul>
+      <li>Set up a new project in Xcode: <ul>
+          <li>Open Xcode and create a new project</li>
+          <li>Choose the "Single View App" template</li>
+          <li>Enter a name for your app and select "Swift" as the programming language</li>
+          <li>Choose a location to save your project and click "Create"</li>
+        </ul>
+      </li>
+      <li>Design the user interface: <ul>
+          <li>Open the "Main.storyboard" file in the Project Navigator</li>
+          <li>Drag and drop a "Label" object onto the canvas</li>
+          <li>Change the text of the label to "Hello, World!"</li>
+          <li>Use the Auto Layout constraints to position the label in the center of the screen</li>
+        </ul>
+      </li>
+      <li>Add interactivity: <ul>
+          <li>Open the "ViewController.swift" file in the Project Navigator</li>
+          <li>Add a function to change the label text when the user taps the screen</li>
+          <li>Connect the label to the ViewController by creating an IBOutlet</li>
+          <li>Connect the ViewController to the view by creating an IBAction</li>
+        </ul>
+      </li>
+      <li>Test the app: <ul>
+          <li>Click the "Run" button in the top-left corner of Xcode</li>
+          <li>The app should launch in the iOS Simulator</li>
+          <li>Test the app by tapping the screen and verifying that the label text changes to "Hello, World!"</li>
+        </ul>
+      </li>
+      <li>Prepare for deployment: <ul>
+          <li>Set the deployment target to the desired iOS version</li>
+          <li>Configure the app icons and launch screen</li>
+          <li>Test the app on a physical device (if available)</li>
+          <li>Create an archive of the app and submit it to the App Store (if desired)</li>
+        </ul>
+      </li>
+      <li><a class="nav3" href="#top">gotoTop</a></li>
+
+    </ul>
+
+
+  </div>
+  <!---->
+
+  <!---->
+  <div id="bitcoin" class="content-div">
+
+    <ul>
+      <li>Voici une explication détaillée des principes de base du Bitcoin pour un débutant complet :</li>
+      <ul>
+        <li>Qu'est-ce que le Bitcoin ?
+          <ul>
+            <li>Le Bitcoin est une monnaie numérique décentralisée, créée en 2009 par une personne ou un groupe sous le
+              pseudonyme de Satoshi Nakamoto.</li>
+            <li>Ses principales caractéristiques sont :
+              <ul>
+                <li>C'est une monnaie entièrement virtuelle, sans existence physique</li>
+                <li>Elle fonctionne sans autorité centrale ni intermédiaires comme les banques</li>
+                <li>Les transactions sont effectuées directement entre utilisateurs</li>
+                <li>Son fonctionnement repose sur un réseau informatique distribué</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Comment fonctionne le Bitcoin ?
+          <ul>
+            <li>Le Bitcoin repose sur deux mécanismes fondamentaux :
+              <ul>
+                <li>La blockchain
+                  <ul>
+                    <li>La blockchain est un grand registre public qui enregistre toutes les transactions Bitcoin.</li>
+                    <li>Ses caractéristiques principales sont :
+                      <ul>
+                        <li>Elle est distribuée sur des milliers d'ordinateurs dans le monde</li>
+                        <li>Elle est transparente et consultable par tous</li>
+                        <li>Elle est immuable : une fois une transaction validée, elle ne peut plus être modifiée</li>
+                        <li>Elle permet de vérifier la propriété des bitcoins et d'empêcher la double dépense</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>Le minage
+                  <ul>
+                    <li>Le minage est le processus qui permet de :
+                      <ul>
+                        <li>Valider et sécuriser les nouvelles transactions</li>
+                        <li>Créer de nouveaux bitcoins</li>
+                      </ul>
+                    </li>
+                    <li>Les mineurs utilisent une puissance de calcul importante pour résoudre des problèmes
+                      mathématiques complexes. Le premier à trouver la solution valide un nouveau bloc de transactions
+                      et reçoit une récompense en bitcoins nouvellement créés.</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Principes clés du Bitcoin
+          <ul>
+            <li>Décentralisation
+              <ul>
+                <li>Aucune autorité centrale ne contrôle le réseau Bitcoin</li>
+                <li>Les règles sont appliquées par consensus entre les participants</li>
+                <li>N'importe qui peut participer au réseau en faisant tourner un nœud</li>
+              </ul>
+            </li>
+            <li>Offre limitée
+              <ul>
+                <li>Le nombre total de bitcoins est limité à 21 millions</li>
+                <li>De nouveaux bitcoins sont créés à un rythme prédéfini et décroissant</li>
+                <li>Cette rareté programmée vise à préserver la valeur du Bitcoin</li>
+              </ul>
+            </li>
+            <li>Pseudonymat
+              <ul>
+                <li>Les utilisateurs opèrent sous des pseudonymes (adresses Bitcoin)</li>
+                <li>Les transactions sont publiques mais les identités ne sont pas directement liées aux adresses</li>
+              </ul>
+            </li>
+            <li>Sécurité cryptographique
+              <ul>
+                <li>Les transactions sont sécurisées par des techniques de cryptographie avancées</li>
+                <li>Chaque utilisateur possède une clé privée pour signer ses transactions</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Utilisation du Bitcoin
+          <ul>
+            <li>Pour utiliser des bitcoins, il faut :
+              <ul>
+                <li>Créer un portefeuille Bitcoin (wallet) pour stocker et gérer ses bitcoins</li>
+                <li>Obtenir des bitcoins en les achetant ou en les recevant comme paiement</li>
+                <li>Envoyer des bitcoins en spécifiant l'adresse du destinataire</li>
+                <li>Payer de petits frais de transaction pour que les mineurs traitent la transaction</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Avantages et inconvénients
+          <ul>
+            <li>Avantages :
+              <ul>
+                <li>Transactions rapides et peu coûteuses, surtout à l'international</li>
+                <li>Contrôle total sur ses fonds</li>
+                <li>Résistance à la censure et à l'inflation</li>
+              </ul>
+            </li>
+            <li>Inconvénients :
+              <ul>
+                <li>Volatilité du cours</li>
+                <li>Adoption encore limitée pour les paiements courants</li>
+                <li>Consommation énergétique importante du minage</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>En résumé, le Bitcoin est un système monétaire innovant qui offre une alternative aux monnaies
+          traditionnelles, avec ses propres avantages et défis. Sa compréhension demande du temps, mais ces principes de
+          base permettent de saisir l'essentiel de son fonctionnement.</li>
+      </ul>
+      <li>Citations:
+        <ul>
+          <li><a href="https://etc-group.com/fr/blog/manuel-de-crypto/bitcoin/">[1]</a></li>
+          <li><a href="https://bitcoin.org/fr/comment-ca-marche">[2]</a></li>
+          <li><a href="https://www.ig.com/fr/bitcoin-btc/comment-fonctionne-le-bitcoin">[3]</a></li>
+          <li><a href="https://cryptoast.fr/bitcoin/">[4]</a></li>
+          <li><a
+              href="https://www.bitpanda.com/academy/fr/lecons/le-whitepaper-de-bitcoin-une-explication-simple/">[5]</a>
+          </li>
+          <li><a
+              href="https://academy.youngplatform.com/fr/cryptomonnaies/comment-demarrer-avec-le-bitcoin-guide-du-debutant/">[6]</a>
+          </li>
+          <li><a href="https://cryptoast.fr/comment-acheter-des-bitcoins/">[7]</a></li>
+          <li><a href="https://cryptonaute.fr/guide-crypto/debuter-en-crypto-monnaie/">[8]</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul>
+      <li><a class="nav3" href="#top">gotoTop</a></li>
+    </ul>
+
+  </div>
+  <!---->
+
+<!---->
+<div id="entorhinal" class="content-div">
+
+  <ul>
+      <li>Le terme "entorhinal" vient du grec ancien "ἔν" (en), signifiant "dans" ou "à l'intérieur", et "ῥίς" (rhís),
+          signifiant "nez".</li>
+      <li>Le mot "rhinal" fait référence à la région nasale ou olfactive du cerveau.</li>
+      <li>Dans le contexte de l'anatomie du cerveau, le cortex entorhinal est une région située à l'intérieur de la
+          partie médiale du lobe temporal, près de la région olfactive.</li>
+      <li>Il joue un rôle important dans la formation et la consolidation des souvenirs, en particulier dans la
+          mémoire spatiale et la navigation.</li>
+      <li>Le terme "entorhinal" a été choisi pour décrire cette région du cerveau en raison de sa proximité avec la
+          région olfactive et de son implication dans le traitement des informations sensorielles, notamment
+          olfactives.</li>
+          <li><a href="https://www.nature.com/articles/d41586-024-03116-8?utm_medium=Social&utm_campaign=nature&utm_source=Twitter#Echobox=1727332140">patterns</a></li>
+  </ul>
+
+  <ul>
+      <li><a class="nav3" href="#top">gotoTop</a></li>
+  </ul>
+
+</div>
+<!---->
+
+<!---->
+<div id="proust" class="content-div">
+  <h2>Volume I : Du côté de chez Swann</h2>
+  <ul>
+      <li>Combray : Le narrateur évoque son enfance à Combray. Il se remémore les rues, la maison familiale, et ses
+          souvenirs d'amour et de désir, notamment pour Gilberte Swann.</li>
+      <li>Un amour de Swann : L'histoire de Charles Swann, un ami de la famille, est développée. Il tombe amoureux de
+          l'artiste Odette de Crécy. Swann se rend compte que son amour pour Odette est conditionné par des éléments
+          superficiels, comme son sens esthétique.</li>
+  </ul>
+
+  <h2>Volume II : À l'ombre des jeunes filles en fleurs</h2>
+  <ul>
+      <li>La scène à l'hôtel de Ville : Le narrateur fait des réflexions sur la jeunesse et la société. Il découvre un
+          monde de jeunes filles et de l'amour. Une série de rencontres avec Albertine, un personnage central qui va
+          influencer sa vie.</li>
+      <li>Les jeux de société : Le narrateur évoque les dynamiques des relations amicales et amoureuses, ainsi que
+          leurs complexités. Les observations de la vie sociale et de l’interaction humaine sont au cœur de ce volume.
+      </li>
+  </ul>
+
+  <h2>Volume III : Le Côté de Guermantes</h2>
+  <ul>
+      <li>La famille Guermantes : Le narrateur décrit son fascination pour le monde aristocratique des Guermantes. Il
+          explore les événements sociaux, les salons, et les interactions entre les personnages.</li>
+      <li>Le bal des Guermantes : Le narrateur est confronté aux codes sociaux et aux hypocrisies de l’aristocratie.
+          De plus, son amour pour Albertine devient plus complexe et plus tumultueux.</li>
+  </ul>
+
+  <h2>Volume IV : Sodom et Gomorrhe</h2>
+  <ul>
+      <li>Les relations homosexuelles : Proust aborde la question de l’homosexualité à travers des personnages comme
+          Baron de Charlus. Le narrateur commence à explorer la complexité des désirs et des relations.</li>
+      <li>Les événements de la société : La dynamique de la société parisienne pendant la Première Guerre mondiale est
+          explorée. Le narrateur réévalue ses relations avec Albertine.</li>
+  </ul>
+
+  <h2>Volume V : La Prisonnière</h2>
+  <ul>
+      <li>La jalousie et l'amour : Le narrateur vit une relation tumultueuse avec Albertine, marquée par la jalousie
+          et la possessivité. Cette section montre comment l'amour et la souffrance s'entrelacent.</li>
+      <li>Les réflexions sur le temps : Le narrateur réfléchit profondément au temps, à la mémoire, et à la nature
+          éphémère des expériences vécues.</li>
+  </ul>
+
+  <h2>Volume VI : L’Évasion</h2>
+  <ul>
+      <li>La mort d'Albertine : La mort d'Albertine est un tournant dans la vie du narrateur. Il commence à accepter
+          le passage du temps et la perte.</li>
+      <li>Les réminiscences : Le narrateur plonge dans des souvenirs passés, explorant la relation entre le temps, la
+          mémoire et l’art. Il découvre le pouvoir de l’art pour capturer l’éphémère.</li>
+  </ul>
+
+  <h2>Volume VII : Le Temps Retrouvé</h2>
+  <ul>
+      <li>La vision de l'art : Le narrateur arrive à une compréhension de la vie, de l’art, et de la manière dont la
+          mémoire fonctionne. Il réalise que le temps perdu peut être retrouvé à travers l'écriture.</li>
+  </ul>
+
+  <h2>La conclusion</h2>
+  <p>"À la recherche du temps perdu" est une exploration vaste des thèmes tels que la mémoire, le temps, l’amour, et
+      la société. Proust utilise une introspection profonde et une prose riche pour créer un portrait nuancé de
+      l'expérience humaine. Chaque volume développe des idées qui se construisent jusqu'à une conclusion finale dans le dernier tome.
+  </p>
+
+  <h2>"À la recherche du temps perdu" est un cycle romanesque en 7 volumes publié entre 1913 et 1927.</h2>
+
+<p>Il suit le narrateur à travers son enfance, son adolescence et sa vie d'adulte, explorant les thèmes de la mémoire, du temps qui passe, de la société française de l'époque et de la création littéraire.</p>
+
+<h2>Moments clés de l'œuvre</h2>
+<ul>
+  <li>La madeleine trempée dans le thé qui fait remonter les souvenirs d'enfance du narrateur</li>
+  <li>Les salons de la haute société parisienne et les personnages qui les fréquentent</li>
+  <li>La relation complexe entre le narrateur et Albertine</li>
+  <li>La réflexion sur l'art et l'acte d'écrire</li>
+</ul>
+
+
+
+  <ul>
+      <li><a class="nav3" href="#top">gotoTop</a></li>
+  </ul>
+
+</div>
+<!---->
+
+  <!---->
+  <!---->
+  <div id="accueil" class="content-div">
+    <!---->
+    <div class="cadre">
+      <div class="ai"><a href="#">ai: >>></a></div>
+      <div class="ai"><a href="https://1min.ai">1min</a></div>
+      <div class="ai"><a href="https://www.youtube.com/channel/UC0m81bQuthaQZmFbXEY9QSw/videos">AICodeKing</a></div>
+      <div class="ai"><a href="https://github.com/Significant-Gravitas/AutoGPT#-installation">autoGPT</a></div>
+      <div class="ai"><a href="https://youtu.be/1cQoPwLkASM?si=2886wElClZ1wGcQx">Nathan</a></div>
+      <div class="ai"><a href="https://www.canva.com/">canva</a></div>
+      <div class="ai"><a href="https://deepai.org/">DeepAI</a></div>
+      <div class="ai"><a href="https://chatgpt.com">chatgpt</a></div>
+      <div class="ai"><a href="https://claude.ai/new">claude</a></div>
+      <div class="ai"><a href="https://duckduckgo.com/?q=DuckDuckGo+AI+Chat&ia=chat&duckai=1">duckduckgo ai</a></div>
+      <div class="ai"><a
+          href="https://www.youtube.com/results?search_query=fusionner+deux+visages+dans+photoshop+mac+">mixer</a></div>
+      <div class="ai"><a href="https://chat.notdiamond.ai/">notdiamond</a></div>
+      <div class="ai"><a href="https://www.perplexity.ai">perplexity</a></div>
+      <div class="ai"><a href="https://www.phind.com/search?home=true">phind</a></div>
+      <div class="ai"><a href="https://websim.ai">websim</a></div>
+      <div class="ai"><a href="https://you.com">you</a></div>
+    </div>
+
+    <div class="cadre">
+      <div class="code"><a href="#">code: >>></a></div>
+      <div class="code"><a href="https://developer.apple.com/documentation/coreml">Apple:core-ml</a></div>
+      <div class="code"><a href="https://developer.apple.com/machine-learning/create-ml/">Apple:create-ml</a></div>
+      <div class="code"><a href="https://developer.apple.com/documentation/vision">Apple:vision</a></div>
+      <div class="code"><a href="https://developer.apple.com/documentation/naturallanguage">Apple:naturallanguage</a>
+      </div>
+      <div class="code"><a href="https://developer.apple.com">Apple:developer</a></div>
+      <div class="code"><a
+          href="https://www.perplexity.ai/search/liste-de-8-couples-background-lPK13Yk4R.qdogRbbx8eUQ">couleurs</a>
+      </div>
+      <div class="code"><a href="https://www.youtube.com/results?search_query=cursor+ide+tutorial">cursor</a></div>
+      <div class="code"><a href="https://dev.to/">dev</a></div>
+      <div class="code"><a href="https://www.developpez.com">developpez</a></div>
+      <div class="code"><a
+          href="https://www.perplexity.ai/search/genere-une-page-html-css-et-jq-RrOkv_H3Qda9l76xvGSVYQ#3">pages</a>
+      </div>
+    </div>
+
+    <div class="cadre">
+      <div class="english"><a href="#">english: >>></a></div>
+      <div class="english"><a href="https://continuingstudies.uvic.ca/elc/studyzone/200/reading/">books1</a></div>
+    </div>
+
+    <div class="cadre">
+      <div class="news"><a href="#">news: >>></a></div>
+      <div class="news"><a href="https://flipboard.com">flipboard</a></div>
+      <div class="news"><a href="https://news.google.com/home?hl=fr&gl=FR&ceid=FR:fr">gnews</a></div>
+      <div class="news"><a href="https://www.i24news.tv/fr/fil-info">i24news</a></div>
+      <div class="news"><a href="https://oqee.tv">oqee</a></div>
+      <div class="news">
+        <a href="https://www.youtube.com/c/Tha%C3%AFsdEscufonYT">Thaïs</a>
+      </div>
+      <div class="news"><a href="https://x.com/home">twitter</a></div>
+    </div>
+    <!---->
+  </div>
+  <!---->
+
+
+
+  <script>
+    $(document).ready(function () {
+
+      // When a button is clicked
+      $(".btn, .btn0, .btn2, .btn3, .btn4, .btn5, .btn6, .btn7, .btn8").click(function () {
+        // Get the ID of the content div to show
+        var contentId = $(this).data("content");
+
+        // Get the content from the selected content div and insert it into the right column
+        var content = $("#" + contentId).html();
+        $("#rightColumn").html(content);
+      });
+
+
+    });
+  </script>
+
+</body>
+
+</html>
